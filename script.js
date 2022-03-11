@@ -1,68 +1,16 @@
-// I relied on several googled resources to understand arrow functions(=>) append shorthand (+=) and .filter
-// I should also source https://www.youtube.com/watch?v=duNmhKgtcsI&t=23 or https://codepen.io/FlorinPop17/pen/BaBePej 
-// as I felt this a slick looking format and really wanted to learn how it worked.
-// just in case the graders want to make sure I followed the instructions, and didnt just copy paste without learning
-// I have also inserted alternate code that is commented out at the bottom of this code
-// Just comment out everything from line
-
-// Sets html/dom elements to global variables to be used in functions
+// global variables
 var generateBtn = document.getElementById("generate");
-var passLength = document.getElementById("islength");
-var passUpper = document.getElementById("upper");
-var passLower = document.getElementById("lower");
-var passNum = document.getElementById("number");
-var passSymbol = document.getElementById("symbols");
 var clipBtn = document.getElementById("copyto");
 var output = document.getElementById("password");
+var critArr = [];
+var passLength = "";
+var lwrYes = "";
+var uprYes = "";
+var numYes = "";
+var symYes = "";
+var secInt = "";
 
-// throwing the above functions into a single object with those functions as values
-
-var objCharsets = {
-  lower: abcLower,
-  upper: abcUpper,
-  number: raNum,
-  symbol: raSym
-}
-
-// This 
-generateBtn.addEventListener("click", () => {
-  var length = +passLength.value;
-  var islower = passLower.checked;
-  var isupper = passUpper.checked;
-  var isnumber = passNum.checked;
-  var issymbol = passSymbol.checked;
-
-  output.innerText = writePassword (islower, isupper, isnumber, issymbol, length);
-  });
-
-
-// Write password to the #password input
-function writePassword(lower, upper, number, symbol, length) {
-  var password = '';
-  var settingCT = lower + upper + number + symbol;
-  var settingArr =  [{lower}, {upper}, {number}, {symbol}].filter(truFalse => Object.values(truFalse)[0]);
-
-	if(settingCT === 0) {
-		return '';
-	}
-
-  if(length < 8 || length > 128) {
-    window.alert("You must have a value between 8 and 128. Try again!")
-    return;
-  }
-
-  for(var i = 0; i < length; i += settingCT) {
-    settingArr.forEach(type => {
-      var objKeys = Object.keys(type)[0];
-      password += objCharsets[objKeys]();
-    });
-  }
-	return password;
-  }
-
-  // Characters are generated through "fromCharCode" which refers to ASCII codes - using (https://www.w3schools.com/charsets/ref_html_ascii.asp)
-// the function is generating a number randomly using math.random to creat a decimal from 0-1 and math.floor is rounding that number after being multiplied by the amount of the characterset
-// (26 in the alphabet/10 per number/15 characters) then per the table adding the number that the first character starts with - finally, it is returned when the function is ran.
+// Functions to grab random characters from ascii table.
 function abcLower() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 97)
   }
@@ -76,7 +24,80 @@ function raSym () {
   return String.fromCharCode(Math.floor(Math.random() * 15) + 33)
   }
 
-//this is the function used to copy the content of the textbox to the user's clipboard
+// Function for password criteria stores true/false and increases count of type via "secInt" variable.
+  function pwCriteria () {
+    var passLower = window.confirm("Do you want LowerCase Alphabet in your password?")
+    if (passLower === true) {
+      lwrYes = true;
+      secInt++;
+    }
+
+    var passUpper = window.confirm("Do you want UpperCase Alphabet in your password?")
+    if (passUpper === true) {
+      uprYes = true;
+      secInt++;
+    }
+
+    var passNum = window.confirm("Do you want Numbers in your password?")
+    if (passNum === true) {
+      numYes = true;
+      secInt++;
+    }
+
+    var passSymbol = window.confirm("Do you want Special Characters in your password?")
+    if (passSymbol === true) {
+      symYes = true;
+      secInt++;
+  }
+}
+
+// Primary function for generating password. In a nutshell, a loop will continue until the values
+// stored in the array is equal to the length specified. Otherwise, it runs one of the character
+// randomizers above again and stores the character into the array. It randomized the array also every loop.
+// Once the array = length, it stops running the loop, stores the joined array without commas as a password.
+ function generatePassword() {
+  var password = "";
+  var passLength = window.prompt("How many characters?\n(Min 8 - Max 128)")
+  if (isNaN(passLength)) {
+    alert("You must enter a numerical value!");
+    pwCriteria();
+    return; }
+  if(passLength < 8 || passLength > 128) {
+    window.alert("You must have a value between 8 and 128.")
+    pwCriteria();
+    return;}
+
+  for (let i = 0; i < passLength; i+=secInt) {
+    if (lwrYes === true && i <= passLength) {
+    critArr.push(abcLower())};
+
+    if (uprYes === true && i <= passLength) {
+    critArr.push(abcUpper())};
+
+    if (numYes === true && i <= passLength) {
+    critArr.push(raNum())};
+
+    if (symYes === true && i <= passLength) {
+    critArr.push(raSym())};
+
+    critArr.sort(() => 0.5 - Math.random());
+  }
+  var password = critArr.join("");
+  return password;
+}
+
+// Takes the output of the generator and adds it to the text field.
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+}
+
+// Makes the generate button kick off the process on-click.
+generateBtn.addEventListener("click", writePassword);
+
+// Added function to copy the contents of the textbox to the clipboard.
 function copyPassword(text) {
   var copyText = document.getElementById("password");
 
@@ -88,8 +109,7 @@ function copyPassword(text) {
   alert("Copied to Clipboard!")
 }
 
+// Allows the copy to clipboard button to work on click.
 clipBtn.addEventListener("click", copyPassword);
 
-// relied on several googled resources to understand arrow functions(=>) append shorthand (+=) and .filter
-// I should also source https://www.youtube.com/watch?v=duNmhKgtcsI&t=23 or https://codepen.io/FlorinPop17/pen/BaBePej 
-// as I felt this a slick looking format and really wanted to learn how it worked.
+pwCriteria();

@@ -30,6 +30,7 @@ header {
   color: white;
 }
 
+/* Controls main card styles only altered or added a few styles*/
 .card {
   background-color: rgb(80, 20, 20);
   border-radius: 10px;
@@ -59,24 +60,6 @@ header {
   min-height: 100px;
 }
 
-.options {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.setLength {
-padding: 0 30% 0 30%;
-
-}
-
-.setLowercase, .setUppercase, .setNumber, .setSymbol {
-  flex: 50%
-}
-
-.setLowercase:hover, .setUppercase:hover, .setNumber:hover, .setSymbol:hover{
-  border: 1px dashed whitesmoke;
-}
-
 .card-footer {
   text-align: center;
 }
@@ -95,6 +78,7 @@ padding: 0 30% 0 30%;
   clear: both;
 }
 
+/* Controls button styles - added .cbtn for copy to clipboard button */
 .btn {
   border: 2px solid black;
   background-color: hsl(360, 91%, 36%);
@@ -136,7 +120,7 @@ button[disabled] {
 .float-right {
   float: right;
 }
-
+/* Controls the text field style */
 #password {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -158,6 +142,7 @@ button[disabled] {
   overflow: hidden;
 }
 
+/* Controls style for mobile friendly flex */
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;

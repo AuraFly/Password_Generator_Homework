@@ -16,41 +16,23 @@
         <div class="card-header">
           <h2>Generate a Password</h2>
         </div>
+        <!-- Main area of focus for this taks is in this section and will be refered to in the JS -->
+        <!-- Area controls the textbox and buttons -->
         <div class="card-body">
           <textarea
             readonly
             id="password"
-            placeholder="Please enter length between 8 and 128 and check the options you would like..."
+            placeholder="Click the Generate button, then specify your desired password length..."
             aria-label="Generated Password"
+            maxlength="128"
           ></textarea>
         </div>
-        <div class="setLength">
-          <label>Specify Length:</label>
-          <input type="number" id="islength" min='8' max='128' value='8' />
-        </div>
-      <div class="options">
-        <div class="setLowercase">
-          <label>Use Lowercase?</label> 
-			    <input type="checkbox" id="lower" checked />
-		    </div>
-        <div class="setUppercase">
-          <label>Use Uppercase?</label> 
-			    <input type="checkbox" id="upper" checked />
-		    </div>
-        <div class="setNumber">
-          <label>Use Numbers?</label> 
-			    <input type="checkbox" id="number" checked />
-		    </div>
-        <div class="setSymbol">
-          <label>Use Symbols?</label> 
-			    <input type="checkbox" id="symbols" checked />
-		    </div>
-      </div>
         <div class="card-footer">
           <button id="generate" class="btn">Generate Password!</button>
         </br>
           <button id="copyto" class="cbtn">Copy to Clipboard!</button>
         </div>
+        <!-- This is the end of the areas that were modified or utilized in the JS file. -->
       </div>
     </div>
     <script src="script.js"></script>
