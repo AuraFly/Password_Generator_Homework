@@ -78,7 +78,7 @@ header {
   clear: both;
 }
 
-/* Controls button styles - added .cbtn for copy to clipboard button */
+/* Controls button styles - added .cbtn for copy to clipboard button and .resetpage */
 .btn {
   border: 2px solid black;
   background-color: hsl(360, 91%, 36%);
@@ -102,6 +102,24 @@ header {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
     0px;
   color: grey;
+  font-style: italic;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 22px;
+  margin: 5px 16px 16px 20px;
+  padding: 5px 24px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.resetpage {
+  border: 2px solid black;
+  background-color: lightblue;
+  border-radius: 25px;
+  font-weight: bolder;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
+    0px;
+  color: black;
   font-style: italic;
   display: inline-block;
   font-size: 17px;
