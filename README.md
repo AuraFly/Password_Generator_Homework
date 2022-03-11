@@ -25,7 +25,9 @@ Once confirmed the main page should load, and the user can click on the generate
 - Once clicked the user will be asked to specify a length between 8-128.
 - Once specified the password will be randomly generated using the above criteria.
 
-Lastly, the password generated can be copied into the clipboard using the 'Copy to Clipboard!' button.
+The password generated can be copied into the clipboard using the 'Copy to Clipboard!' button.
+
+Lastly, the page can be reloaded and the criteria reset by clicking on the RESET button.
 
 ## Credits
 Jordan Covarrubias aka "AuraFly"
