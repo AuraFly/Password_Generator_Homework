@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Password Generator</h1>
+      </header>
+      <div class="card">
+        <div class="card-header">
+          <h2>Generate a Password</h2>
+        </div>
+        <div class="card-body">
+          <textarea
+            readonly
+            id="password"
+            placeholder="Please enter length between 8 and 128 and check the options you would like..."
+            aria-label="Generated Password"
+          ></textarea>
+        </div>
+        <div class="setLength">
+          <label>Specify Length:</label>
+          <input type="number" id="islength" min='8' max='128' value='8' />
+        </div>
+      <div class="options">
+        <div class="setLowercase">
+          <label>Use Lowercase?</label> 
+			    <input type="checkbox" id="lower" checked />
+		    </div>
+        <div class="setUppercase">
+          <label>Use Uppercase?</label> 
+			    <input type="checkbox" id="upper" checked />
+		    </div>
+        <div class="setNumber">
+          <label>Use Numbers?</label> 
+			    <input type="checkbox" id="number" checked />
+		    </div>
+        <div class="setSymbol">
+          <label>Use Symbols?</label> 
+			    <input type="checkbox" id="symbols" checked />
+		    </div>
+      </div>
+        <div class="card-footer">
+          <button id="generate" class="btn">Generate Password!</button>
+        </br>
+          <button id="copyto" class="cbtn">Copy to Clipboard!</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
