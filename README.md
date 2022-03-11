@@ -8,8 +8,8 @@
 - I altered some of the CSS and html too look a bit cleaner and have different styles.
 
 ## Website can be viewed here:
-- 
 
+- https://aurafly.github.io/Password_Generator_Homework/
 
 ![Example Screenshot](./SS.jpg)
 
