@@ -11,7 +11,10 @@
 
 - https://aurafly.github.io/Password_Generator_Homework/
 
-![Example Screenshot](./SS1.jpg)
+
+
+![Example Screenshot](./ss1.jpg)
+
 
 ## Usage
 
